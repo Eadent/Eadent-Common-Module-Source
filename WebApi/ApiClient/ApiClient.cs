@@ -193,6 +193,50 @@ namespace Eadent.Common.WebApi.ApiClient
             return response;
         }
 
+        public async Task<IApiClientResponse<TResponseDto>> PatchAsync<TRequestDto, TResponseDto>(string relativeUrl, TRequestDto requestDto, ApiHeaders optionalHeaders)
+        {
+            var response = new ApiClientResponse<TResponseDto>()
+            {
+            };
+
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    using (var httpContent = CreateContent(requestDto))
+                    {
+                        using (var httpRequest = new HttpRequestMessage(HttpMethod.Patch, UrlCombine(RestApiBaseUrl, relativeUrl)))
+                        {
+                            httpRequest.Content = httpContent;
+
+                            AddHeaders(httpRequest, optionalHeaders);
+
+                            using (var httpResponse = await httpClient.SendAsync(httpRequest))
+                            {
+                                response.HttpStatusCode = (int)httpResponse.StatusCode;
+                                response.HttpResponseHeaders = new ApiHeaders(httpResponse.Headers);
+
+                                response.ResponseText = await httpResponse.Content.ReadAsStringAsync();
+
+                                if (typeof(TResponseDto) != typeof(string))
+                                {
+                                    response.ResponseDto = JsonSerializer.Deserialize<TResponseDto>(response.ResponseText);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                Logger.LogError(exception, "An Exception occurred.");
+
+                response.HttpStatusCode = (int)HttpStatusCode.InternalServerError;
+            }
+
+            return response;
+        }
+
         public async Task<IApiClientResponse<TResponseDto>> DeleteAsync<TResponseDto>(string relativeUrl, ApiHeaders optionalHeaders)
         {
             var response = new ApiClientResponse<TResponseDto>()

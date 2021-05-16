@@ -15,6 +15,8 @@ namespace Eadent.Common.WebApi.ApiClient
 
         Task<IApiClientResponse<TResponseDto>> PutAsync<TRequestDto, TResponseDto>(string relativeUrl, TRequestDto requestDto, ApiHeaders optionalHeaders);
 
+        Task<IApiClientResponse<TResponseDto>> PatchAsync<TRequestDto, TResponseDto>(string relativeUrl, TRequestDto requestDto, ApiHeaders optionalHeaders);
+
         Task<IApiClientResponse<TResponseDto>> DeleteAsync<TResponseDto>(string relativeUrl, ApiHeaders optionalHeaders);
     }
 }
