@@ -10,7 +10,9 @@
         Unauthorised = 2000,
 
         // User Sessions.
-        SuccessUserMustChangePasssword = 3000,
-        UserLockedOut = 3001
+        SuccessUserMustChangePassword = 3000,
+        UserLockedOut = 3001,
+        SessionTimedOutExpired = 3002,
+        SessionSignedOut = 3003
     }
 }
