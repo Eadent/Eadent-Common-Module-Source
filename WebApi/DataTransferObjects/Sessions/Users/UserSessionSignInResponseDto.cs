@@ -7,6 +7,8 @@ namespace Eadent.Common.WebApi.DataTransferObjects.Sessions.Users
     {
         public string SessionToken { get; set; }
 
+        public string SignInUrl { get; set; }
+
         public DateTime? PreviousSignInDateTimeUtc { get; set; }
 
         public DateTime? SignInLockOutDateTimeUtc { get; set; }
