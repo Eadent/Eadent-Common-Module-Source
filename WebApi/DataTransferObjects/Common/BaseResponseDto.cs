@@ -12,8 +12,8 @@ namespace Eadent.Common.WebApi.DataTransferObjects.Common
 
         public BaseResponseDto()
         {
-            DeveloperCode = DeveloperCode.Success;
-            DeveloperMessage = "Success.";
+            DeveloperCode = DeveloperCode.Error;
+            DeveloperMessage = "Error.";
         }
     }
 }
