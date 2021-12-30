@@ -7,8 +7,6 @@
 
         public string SoftwareVersion { get; set; }
 
-        public string Temporary => "Rapture.Therapy.WebApi";
-
         // Properties for Signed In Sessions.
         public string LocalIpAddress { get; set; }
 
