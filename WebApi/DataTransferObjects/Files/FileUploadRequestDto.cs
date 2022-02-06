@@ -1,23 +1,25 @@
-﻿namespace Eadent.Common.WebApi.DataTransferObjects.FileTransfers
+﻿namespace Eadent.Common.WebApi.DataTransferObjects.Files
 {
     public class FileUploadRequestDto
     {
-        public string Format { get; set; }
-        public string RelativePath { get; set; }
+        public string FileFormat { get; set; }
+
+        public string SourcePath { get; set; }
+
+        public string DestinationRelativePath { get; set; }
+
         public string FileName { get; set; }
 
         public long TotalFileSize { get; set; }
-        public long StandardBlockSize { get; set; }
-        public long TotalNumBlocks { get; set; }
 
-        public long SizeBeforeThisBlock { get; set; }
-        public long SizeAfterThisBlock { get; set; }
+        public long ChunkOffset { get; set; }
 
-        public long BlockIndex { get; set; }
-        public long ThisBlockSize { get; set; }
-        public string BlockBase64 { get; set; }
+        public long ChunkSize { get; set; }
 
-        public string BlockHashType { get; set; }
-        public string BlockHashBase64 { get; set; }
+        public string ChunkBase64 { get; set; }
+
+        public string ChunkHashType { get; set; }
+
+        public string ChunkHashBase64 { get; set; }
     }
 }
