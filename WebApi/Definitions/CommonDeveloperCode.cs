@@ -1,6 +1,6 @@
 ﻿namespace Eadent.Common.WebApi.Definitions
 {
-    public enum DeveloperCode : long
+    public enum CommonDeveloperCode : long
     {
         Error = 0,
 

@@ -4,7 +4,7 @@ namespace Eadent.Common.WebApi.DataTransferObjects.Common
 {
     public class BaseResponseDto
     {
-        public DeveloperCode DeveloperCode { get; private set; }
+        public long DeveloperCode { get; private set; }
 
         public string DeveloperMessage { get; private set; }
 
@@ -17,25 +17,25 @@ namespace Eadent.Common.WebApi.DataTransferObjects.Common
 
         public void SetError()
         {
-            DeveloperCode = DeveloperCode.Error;
+            DeveloperCode = (long)CommonDeveloperCode.Error;
             DeveloperMessage = "Error.";
         }
 
         public void SetUnauthorised()
         {
-            DeveloperCode = DeveloperCode.Unauthorised;
+            DeveloperCode = (long)CommonDeveloperCode.Unauthorised;
             DeveloperMessage = "Unauthorised.";
         }
 
         public void SetSuccess()
         {
-            DeveloperCode = DeveloperCode.Success;
+            DeveloperCode = (long)CommonDeveloperCode.Success;
             DeveloperMessage = "Success.";
         }
 
-        public void Set(DeveloperCode developerCode, string developerMessage)
+        public void Set(CommonDeveloperCode developerCode, string developerMessage)
         {
-            DeveloperCode = developerCode;
+            DeveloperCode = (long)developerCode;
             DeveloperMessage = developerMessage;
         }
     }
