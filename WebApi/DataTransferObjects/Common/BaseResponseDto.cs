@@ -8,7 +8,7 @@ namespace Eadent.Common.WebApi.DataTransferObjects.Common
 
         public string developerMessage { get; private set; }
 
-        public long GeneratedInMs { get; set; }
+        public long generatedInMs { get; set; }
 
         public BaseResponseDto()
         {
