@@ -33,9 +33,9 @@ namespace Eadent.Common.WebApi.DataTransferObjects.Common
             DeveloperMessage = "Success.";
         }
 
-        public void Set(CommonDeveloperCode developerCode, string developerMessage)
+        public void Set(long developerCode, string developerMessage)
         {
-            DeveloperCode = (long)developerCode;
+            DeveloperCode = developerCode;
             DeveloperMessage = developerMessage;
         }
     }

@@ -2,17 +2,22 @@
 {
     public enum CommonDeveloperCode : long
     {
-        Error = 0,
-
         Success = 1000,
 
+        Error = 2000,
+
+        // General.
+        MissingRequestBody = 3000,
+
         // Authentication/Authorisation.
-        Unauthorised = 2000,
+        Unauthorised = 4000,
 
         // User Sessions.
-        SuccessUserMustChangePassword = 3000,
-        UserLockedOut = 3001,
-        SessionTimedOutExpired = 3002,
-        SessionSignedOut = 3003
+        SuccessUserMustChangePassword = 5000,
+        UserLockedOut = 5001,
+        SessionTimedOutExpired = 5002,
+        SessionSignedOut = 5003,
+        InvalidEMailAddress = 5004,
+        InvalidPassword = 5005
     }
 }

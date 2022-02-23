@@ -4,7 +4,7 @@ namespace Eadent.Common.WebApi.Helpers
 {
     public class HttpHelper
     {
-        public static string GetRemoteAddress(HttpRequest request)
+        public static string GetRemoteIpAddress(HttpRequest request)
         {
             var remoteAddressString = "*** Unknown ***";
 
@@ -21,7 +21,7 @@ namespace Eadent.Common.WebApi.Helpers
             return remoteAddressString;
         }
 
-        public static string GetLocalAddress(HttpRequest request)
+        public static string GetLocalIpAddress(HttpRequest request)
         {
             var hostAddressString = "*** Unknown ***";
 
