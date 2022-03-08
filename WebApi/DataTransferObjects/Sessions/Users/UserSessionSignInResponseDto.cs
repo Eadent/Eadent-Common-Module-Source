@@ -1,18 +1,24 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 using Eadent.Common.WebApi.DataTransferObjects.Common;
 
 namespace Eadent.Common.WebApi.DataTransferObjects.Sessions.Users
 {
     public class UserSessionSignInResponseDto : BaseResponseDto
     {
-        public string sessionToken { get; set; }
+        [JsonPropertyName("sessionToken")]
+        public string SessionToken { get; set; }
 
-        public string signInUrl { get; set; }
+        [JsonPropertyName("signInUrl")]
+        public string SignInUrl { get; set; }
 
-        public DateTime? previousSignInDateTimeUtc { get; set; }
+        [JsonPropertyName("previousSignInDateTimeUtc")]
+        public DateTime? PreviousSignInDateTimeUtc { get; set; }
 
-        public DateTime? signInLockOutDateTimeUtc { get; set; }
+        [JsonPropertyName("signInLockOutDateTimeUtc")]
+        public DateTime? SignInLockOutDateTimeUtc { get; set; }
 
-        public long? signInLockOutDurationSeconds { get; set; }
+        [JsonPropertyName("signInLockOutDurationSeconds")]
+        public long? SignInLockOutDurationSeconds { get; set; }
     }
 }
