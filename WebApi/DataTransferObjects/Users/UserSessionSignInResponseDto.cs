@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Eadent.Common.WebApi.DataTransferObjects.Common;
+using System;
 using System.Text.Json.Serialization;
-using Eadent.Common.WebApi.DataTransferObjects.Common;
 
 namespace Eadent.Common.WebApi.DataTransferObjects.Sessions.Users
 {
