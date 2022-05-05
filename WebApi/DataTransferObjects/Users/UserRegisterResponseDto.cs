@@ -1,10 +1,11 @@
-﻿using System.Text.Json.Serialization;
+﻿using Eadent.Common.WebApi.DataTransferObjects.Common;
+using System.Text.Json.Serialization;
 namespace Eadent.Common.WebApi.DataTransferObjects.Sessions.Users
 {
-    public class RegisterUserResponseDto
+    public class UserRegisterResponseDto : BaseResponseDto
     {
         [JsonPropertyName("registerUserStatusId")]
-        short RegisterUserStatusId { get; set; }
+        public short RegisterUserStatusId { get; set; }
 
         [JsonPropertyName("userId")]
         public long UserId { get; set; }

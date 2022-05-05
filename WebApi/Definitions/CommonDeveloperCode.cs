@@ -17,7 +17,9 @@
         UserLockedOut = 5001,
         SessionTimedOutExpired = 5002,
         SessionSignedOut = 5003,
-        InvalidEMailAddress = 5004,
-        InvalidPassword = 5005
+        InvalidDisplayName = 5004,
+        InvalidEMailAddress = 5005,
+        InvalidPassword = 5006,
+        UserAlreadyExists = 5007
     }
 }

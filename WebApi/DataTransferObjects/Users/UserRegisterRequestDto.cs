@@ -2,19 +2,19 @@
 
 namespace Eadent.Common.WebApi.DataTransferObjects.Sessions.Users
 {
-    public class RegisterUserRequestDto
+    public class UserRegisterRequestDto
     {
         [JsonPropertyName("createdByApplicationId")]
-        int CreatedByApplicationId { get; set; }
+        public int CreatedByApplicationId { get; set; }
 
         [JsonPropertyName("userGuidString")]
         public string UserGuidString { get; set; }
 
         [JsonPropertyName("roleId")]
-        short RoleId { get; set; }
+        public short RoleId { get; set; }
 
         [JsonPropertyName("displayName")]
-        string DisplayName { get; set; }
+        public string DisplayName { get; set; }
 
         [JsonPropertyName("eMailAddress")]
         public string EMailAddress { get; set; }
