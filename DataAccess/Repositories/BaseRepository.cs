@@ -8,7 +8,6 @@ namespace Eadent.Common.DataAccess.Repositories
     public class BaseRepository<TDatabase, TEntity, TEntityIdType> : IBaseRepository<TEntity, TEntityIdType>
         where TDatabase : IBaseDatabase
         where TEntity : class
-        where TEntityIdType : struct
     {
         protected TDatabase Database { get; }
 
@@ -22,12 +21,12 @@ namespace Eadent.Common.DataAccess.Repositories
             Database.Context.Set<TEntity>().Add(entity);
         }
 
-        public TEntity Get(TEntityIdType entityId)
+        public TEntity? Get(TEntityIdType entityId)
         {
             return Database.Context.Set<TEntity>().Find(entityId);
         }
 
-        public TEntity GetFirstOrDefault(Func<TEntity, bool> where)
+        public TEntity? GetFirstOrDefault(Func<TEntity, bool> where)
         {
             return Database.Context.Set<TEntity>().FirstOrDefault(where);
         }

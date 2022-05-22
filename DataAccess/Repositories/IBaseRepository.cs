@@ -7,9 +7,9 @@ namespace Eadent.Common.DataAccess.Repositories
     {
         void Create(TEntity entity);
 
-        TEntity Get(TEntityIdType entityId);
+        TEntity? Get(TEntityIdType entityId);
 
-        TEntity GetFirstOrDefault(Func<TEntity, bool> where);
+        TEntity? GetFirstOrDefault(Func<TEntity, bool> where);
 
         IEnumerable<TEntity> GetAll();
 
