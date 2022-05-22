@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Eadent.Common.DataAccess.Repositories
+namespace Eadent.Common.DataAccess.EntityFramework.Repositories
 {
     public class BaseRepository<TDatabase, TEntity, TEntityIdType> : IBaseRepository<TEntity, TEntityIdType>
         where TDatabase : IBaseDatabase

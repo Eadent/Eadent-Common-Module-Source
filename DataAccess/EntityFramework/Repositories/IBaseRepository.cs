@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Eadent.Common.DataAccess.Repositories
+namespace Eadent.Common.DataAccess.EntityFramework.Repositories
 {
     public interface IBaseRepository<TEntity, in TEntityIdType>
     {
