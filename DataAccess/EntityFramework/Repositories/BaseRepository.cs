@@ -21,12 +21,12 @@ namespace Eadent.Common.DataAccess.EntityFramework.Repositories
             Database.Context.Set<TEntity>().Add(entity);
         }
 
-        public TEntity? Get(TEntityIdType entityId)
+        public TEntity Get(TEntityIdType entityId)
         {
             return Database.Context.Set<TEntity>().Find(entityId);
         }
 
-        public TEntity? GetFirstOrDefault(Func<TEntity, bool> where)
+        public TEntity GetFirstOrDefault(Func<TEntity, bool> where)
         {
             return Database.Context.Set<TEntity>().FirstOrDefault(where);
         }
