@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Eadent.Common.DataAccess.EntityFramework.Databases
 {
@@ -26,5 +28,19 @@ namespace Eadent.Common.DataAccess.EntityFramework.Databases
         int ExecuteSqlInterpolated(FormattableString sql);
 
         int SaveChanges();
+
+        // Async Methods.
+
+        Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default);
+
+        Task CommitTransactionAsync(CancellationToken cancellationToken = default);
+
+        Task RollbackTransactionAsync(CancellationToken cancellationToken = default);
+
+        Task<int> ExecuteSqlRawAsync(string sql, IEnumerable<object> parameters, CancellationToken cancellationToken = default);
+
+        Task<int> ExecuteSqlInterpolatedAsync(FormattableString sql, CancellationToken cancellationToken = default);
+
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }

@@ -1,8 +1,11 @@
 ﻿using Eadent.Common.DataAccess.EntityFramework.Databases;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Eadent.Common.DataAccess.EntityFramework.Repositories
 {
@@ -60,6 +63,61 @@ namespace Eadent.Common.DataAccess.EntityFramework.Repositories
         public int SaveChanges()
         {
             return Database.SaveChanges();
+        }
+
+        // Async Methods.
+
+        public async Task CreateAsync(TEntity entity, CancellationToken cancellationToken = default)
+        {
+            await Database.Context.Set<TEntity>().AddAsync(entity, cancellationToken);
+        }
+
+        public async Task<TEntity> GetAsync(TEntityIdType entityId, CancellationToken cancellationToken = default)
+        {
+            return await Database.Context.Set<TEntity>().FindAsync(new object[] { entityId }, cancellationToken);
+        }
+
+        public async Task<TEntity> GetFirstOrDefaultAsync(Expression<Func<TEntity, bool>> where, CancellationToken cancellationToken = default)
+        {
+            return await Database.Context.Set<TEntity>().FirstOrDefaultAsync(where, cancellationToken);
+        }
+
+        public async Task<TEntity> GetLastOrDefaultAsync<TOrderByKey>(
+            Expression<Func<TEntity, bool>> where,
+            Expression<Func<TEntity, TOrderByKey>> orderBy,
+            CancellationToken cancellationToken = default)
+        {
+            return await Database.Context.Set<TEntity>()
+                .Where(where)
+                .OrderByDescending(orderBy)
+                .FirstOrDefaultAsync(cancellationToken);
+        }
+
+        public async Task<List<TEntity>> GetAllAsync(CancellationToken cancellationToken = default)
+        {
+            return await Database.Context.Set<TEntity>().ToListAsync(cancellationToken);
+        }
+
+        public async Task<List<TEntity>> GetManyAsync(Expression<Func<TEntity, bool>> where, CancellationToken cancellationToken = default)
+        {
+            return await Database.Context.Set<TEntity>().Where(where).ToListAsync(cancellationToken);
+        }
+
+        public Task UpdateAsync(TEntity entity, CancellationToken cancellationToken = default)
+        {
+            Update(entity);
+            return Task.CompletedTask;
+        }
+
+        public Task DeleteAsync(TEntity entity, CancellationToken cancellationToken = default)
+        {
+            Delete(entity);
+            return Task.CompletedTask;
+        }
+
+        public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            return await Database.SaveChangesAsync(cancellationToken);
         }
     }
 }
