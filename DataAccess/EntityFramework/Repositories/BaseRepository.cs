@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace Eadent.Common.DataAccess.EntityFramework.Repositories
 {
@@ -29,6 +30,11 @@ namespace Eadent.Common.DataAccess.EntityFramework.Repositories
         public TEntity GetFirstOrDefault(Func<TEntity, bool> where)
         {
             return Database.Context.Set<TEntity>().FirstOrDefault(where);
+        }
+
+        public TEntity GetLastOrDefault<TOrderByKey>(Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, TOrderByKey>> orderBy)
+        {
+            return Database.Context.Set<TEntity>().Where(where).OrderByDescending(orderBy).FirstOrDefault();
         }
 
         public IEnumerable<TEntity> GetAll()
